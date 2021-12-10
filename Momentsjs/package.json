@@ -46,5 +46,8 @@
     "webpack-dev-server": "^4.4.0",
     "webpack-merge": "^5.8.0",
     "webpack-spritesmith": "^1.1.0"
+  },
+  "dependencies": {
+    "moment": "^2.29.1"
   }
 }
