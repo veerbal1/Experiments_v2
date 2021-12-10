@@ -11,6 +11,10 @@ const TodoSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  isCompleted:{
+    type: Boolean,
+    default: false,
+  }
 });
 
 module.exports = mongoose.model("Todo", TodoSchema);
