@@ -14,16 +14,15 @@ void main() {
 
 var fragmentShaderText = `#version 300 es
 
-// fragment shaders don't have a default precision so we need
-// to pick one. highp is a good default. It means "high precision"
 precision highp float;
+
+uniform vec4 u_color;
 
 // we need to declare an output for the fragment shader
 out vec4 outColor;
 
 void main() {
-  // Just set the output to a constant redish-purple
-  outColor = vec4(1, 0, 0.5, 1);
+  outColor = u_color;
 }
 `;
 
@@ -79,6 +78,8 @@ window.onload = () => {
   let positionAttributeLocation = gl.getAttribLocation(program, "a_position");
   console.log(positionAttributeLocation);
 
+  var colorLocation = gl.getUniformLocation(program, "u_color");
+
   // Create a buffer and put three 2d points in it.
   let positionBuffer = gl.createBuffer();
 
@@ -88,13 +89,9 @@ window.onload = () => {
   // let positions = [1, 0, 0, 0, 0, 1];
   // Create a position array for rectangle
   let positions = [
-    0, 0,
-    0, 1,
-    1, 0,
+    0, 0, 0, 1, 1, 0,
 
-    0, 1,
-    1, 0,
-    1, 1,
+    0, 1, 1, 0, 1, 1,
   ];
 
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
@@ -124,7 +121,7 @@ window.onload = () => {
 
   // Clear the canvas
   gl.clearColor(0, 0, 0, 0);
-  gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
   // Tell it to use the program (pair of shaders)
   gl.useProgram(program);
@@ -132,5 +129,27 @@ window.onload = () => {
   // Bind the attribute/buffer set we want.
   gl.bindVertexArray(vao);
 
-  gl.drawArrays(gl.TRIANGLES, 0, 6);
+  // Fill the buffer with the values that define a rectangle.
+  function setRectangle(gl, x, y, width, height) {
+    var x1 = x;
+    var x2 = x + width;
+    var y1 = y;
+    var y2 = y + height;
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([x1, y1, x2, y1, x1, y2, x1, y2, x2, y1, x2, y2]),
+      gl.STATIC_DRAW
+    );
+  }
+
+  function randomInt() {
+    return Math.random();
+  }
+
+  for (let i = 0; i <= 50; i++) {
+    setRectangle(gl, randomInt(), randomInt(), randomInt(), randomInt());
+    // Set a random color.
+    gl.uniform4f(colorLocation, Math.random(), Math.random(), Math.random(), 1);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
 };
