@@ -2,7 +2,7 @@
   "name": "matter.js",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/webpack.production.js",
     "dev": "webpack serve --open --config webpack/webpack.development.js",
@@ -46,5 +46,8 @@
     "webpack-dev-server": "^4.4.0",
     "webpack-merge": "^5.8.0",
     "webpack-spritesmith": "^1.1.0"
+  },
+  "dependencies": {
+    "matter-js": "^0.18.0"
   }
 }
