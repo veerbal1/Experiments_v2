@@ -52,20 +52,6 @@ window.onload = () => {
 
   //   Create runner
   var runner = Runner.create();
-
-  window.onkeydown = function (e) {
-    if (e.keyCode == 37) {
-      Matter.Body.setPosition(boxA, {
-        x: boxA.position.x - 10,
-        y: boxA.position.y,
-      });
-    } else if (e.keyCode == 39) {
-      Matter.Body.setPosition(boxA, {
-        x: boxA.position.x + 10,
-        y: boxA.position.y,
-      });
-    }
-  };
   eventListeners(boxA);
   //   Run the engine
   Runner.run(runner, engine);
