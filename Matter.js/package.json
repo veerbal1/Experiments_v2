@@ -48,6 +48,7 @@
     "webpack-spritesmith": "^1.1.0"
   },
   "dependencies": {
-    "matter-js": "^0.18.0"
+    "matter-js": "^0.18.0",
+    "poly-decomp": "^0.3.0"
   }
 }

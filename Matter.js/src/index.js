@@ -1,12 +1,15 @@
 import './style.scss';
 import Matter from 'matter-js';
-import image from './asset/webp.webp';
+import svgImage from './asset/svg.svg';
 
 var Engine = Matter.Engine;
 var Render = Matter.Render;
 var Runner = Matter.Runner;
 var Composite = Matter.Composite;
 var Bodies = Matter.Bodies;
+var Common = Matter.Common;
+
+Common.setDecomp(require('poly-decomp'));
 
 // elements
 let leftButton;
@@ -34,6 +37,7 @@ window.onload = () => {
 
   //   Create two boxes and a ground
   var boxA = Bodies.rectangle(200, 200, 80, 80);
+
   var ground = Bodies.rectangle(
     window.innerWidth / 2,
     window.innerHeight - 40,
