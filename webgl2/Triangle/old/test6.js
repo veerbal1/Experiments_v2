@@ -2,7 +2,7 @@
 
 window.onload = () => {
   var canvas = document.getElementById('canvas');
-  gl = canvas.getContext('webgl2');
+  var gl = canvas.getContext('webgl2');
 
   /*========== Defining and storing the geometry ==========*/
 

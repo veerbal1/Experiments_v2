@@ -2,7 +2,7 @@
 
 window.onload = () => {
   var canvas = document.getElementById('canvas');
-  gl = canvas.getContext('webgl2');
+  var gl = canvas.getContext('webgl2');
 
   var vertices = [-0.5, 0.5, 0.0, -0.5, -0.5, 0.0, 0.5, -0.5, 0.0];
 
