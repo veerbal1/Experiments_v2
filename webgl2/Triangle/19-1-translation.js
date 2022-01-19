@@ -9,11 +9,16 @@ in vec2 a_position;
 // Used to pass in the resolution of the canvas
 uniform vec2 u_resolution;
 
+// translation to add to position
+uniform vec2 u_translation;
+
 // all shaders have a main function
 void main() {
+  // Add in the translation
+  vec2 position = a_position + u_translation;
 
   // convert the position from pixels to 0.0 to 1.0
-  vec2 zeroToOne = a_position / u_resolution;
+  vec2 zeroToOne = position / u_resolution;
 
   // convert from 0->1 to 0->2
   vec2 zeroToTwo = zeroToOne * 2.0;
@@ -69,6 +74,7 @@ function main() {
     'u_resolution'
   );
   var colorLocation = gl.getUniformLocation(program, 'u_color');
+  var translationLocation = gl.getUniformLocation(program, 'u_translation');
 
   // Create a buffer and put a single pixel space rectangle in
   // it (2 triangles)
@@ -132,6 +138,7 @@ function main() {
   var color = [Math.random(), Math.random(), Math.random(), 1];
 
   updateScene();
+  gl.uniform4fv(colorLocation, color);
   function updatePosition(index) {
     return function (event, ui) {
       translation[index] = ui.value;
@@ -144,15 +151,17 @@ function main() {
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    setRectangle(gl, translation[0], translation[1], 200, 200);
+    setGeometry(gl);
     // setTriangle(gl, randomInt(300), randomInt(300), randomInt(300), randomInt(300));
 
     gl.uniform4fv(colorLocation, color);
+    // Set the translation.
+    gl.uniform2fv(translationLocation, translation);
 
     // draw
     var primitiveType = gl.TRIANGLES;
     var offset = 0;
-    var count = 6;
+    var count = 18;
     gl.drawArrays(primitiveType, offset, count);
   }
 }
@@ -183,6 +192,23 @@ function setTriangle(gl, x, y, width, height) {
   gl.bufferData(
     gl.ARRAY_BUFFER,
     new Float32Array([x1, y1, x2, y1, x1, y2]),
+    gl.STATIC_DRAW
+  );
+}
+
+function setGeometry(gl) {
+  gl.bufferData(
+    gl.ARRAY_BUFFER,
+    new Float32Array([
+      // top rung
+      30, 0, 100, 0, 30, 30, 30, 30, 100, 0, 100, 30,
+
+      // middle rung
+      30, 60, 67, 60, 30, 90, 30, 90, 67, 60, 67, 90,
+
+      // left column
+      0, 0, 30, 0, 0, 150, 0, 150, 30, 0, 30, 150,
+    ]),
     gl.STATIC_DRAW
   );
 }
