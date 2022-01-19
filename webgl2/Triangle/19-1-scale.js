@@ -15,15 +15,18 @@ uniform vec2 u_translation;
 // rotation values
 uniform vec2 u_rotation;
 
+// scale values
 uniform vec2 u_scale;
 
 // all shaders have a main function
 void main() {
+  // Scale the positon
   vec2 scaledPosition = a_position * u_scale;
+
   // Rotate the position
   vec2 rotatedPosition = vec2(
-    scaledPosition.x * u_rotation.y + scaledPosition.y * u_rotation.x,
-    scaledPosition.y * u_rotation.y - scaledPosition.x * u_rotation.x);
+     scaledPosition.x * u_rotation.y + scaledPosition.y * u_rotation.x,
+     scaledPosition.y * u_rotation.y - scaledPosition.x * u_rotation.x);
 
   // Add in the translation
   vec2 position = rotatedPosition + u_translation;
@@ -119,8 +122,8 @@ function main() {
   // to hold the translation,
   var translation = [150, 100];
   var rotation = [0, 1];
-  var color = [Math.random(), Math.random(), Math.random(), 1];
   var scale = [1, 1];
+  var color = [Math.random(), Math.random(), Math.random(), 1];
 
   drawScene();
 
@@ -135,47 +138,32 @@ function main() {
     slide: updatePosition(1),
     max: gl.canvas.height,
   });
-
-  webglLessonsUI.setupSlider('#angle', {
-    value: 0,
-    slide: updateRotation,
-    max: 360,
-    min: 0,
-  });
-  webglLessonsUI.setupSlider('#scalex', {
-    value: 1,
+  webglLessonsUI.setupSlider('#angle', { slide: updateAngle, max: 360 });
+  webglLessonsUI.setupSlider('#scaleX', {
+    value: scale[0],
     slide: updateScale(0),
-    max: 5,
     min: -5,
+    max: 5,
     step: 0.01,
+    precision: 2,
   });
-  webglLessonsUI.setupSlider('#scaley', {
-    value: 1,
+  webglLessonsUI.setupSlider('#scaleY', {
+    value: scale[1],
     slide: updateScale(1),
-    max: 5,
     min: -5,
+    max: 5,
     step: 0.01,
+    precision: 2,
   });
 
-  // $("#rotation").gmanUnitCircle({
-  //   width: 200,
-  //   height: 200,
-  //   value: 0,
-  //   slide: function(e, u) {
-  //     rotation[0] = u.x;
-  //     rotation[1] = u.y;
-  //     drawScene();
-  //   },
-  // });
-
-  function updateScale(index) {
+  function updatePosition(index) {
     return function (event, ui) {
-      scale[index] = ui.value;
+      translation[index] = ui.value;
       drawScene();
     };
   }
 
-  function updateRotation(event, ui) {
+  function updateAngle(event, ui) {
     var angleInDegrees = 360 - ui.value;
     var angleInRadians = (angleInDegrees * Math.PI) / 180;
     rotation[0] = Math.sin(angleInRadians);
@@ -183,9 +171,9 @@ function main() {
     drawScene();
   }
 
-  function updatePosition(index) {
+  function updateScale(index) {
     return function (event, ui) {
-      translation[index] = ui.value;
+      scale[index] = ui.value;
       drawScene();
     };
   }
@@ -219,6 +207,8 @@ function main() {
 
     // Set the rotation.
     gl.uniform2fv(rotationLocation, rotation);
+
+    // Set the scale.
     gl.uniform2fv(scaleLocation, scale);
 
     // Draw the geometry.
@@ -248,10 +238,4 @@ function setGeometry(gl) {
   );
 }
 
-// $(function(){
-//   main();
-// });
-
-window.onload = () => {
-  main();
-};
+main();
