@@ -71,9 +71,6 @@ function main() {
   // Bind it to ARRAY_BUFFER (think of it as ARRAY_BUFFER = positionBuffer)
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
-  var positions = [0, 500, 0, 0, 250, 0, 250, 0, 500, 0, 500, 500];
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-
   // Create a vertex array object (attribute state)
   var vao = gl.createVertexArray();
 
@@ -103,10 +100,6 @@ function main() {
   // Tell WebGL how to convert from clip space to pixels
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
-  // Clear the canvas
-  gl.clearColor(0, 0, 0, 0);
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
   // Tell it to use our program (pair of shaders)
   gl.useProgram(program);
 
@@ -117,11 +110,23 @@ function main() {
   // pixels to clipspace in the shader
   gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
 
-  // draw
-  var primitiveType = gl.TRIANGLES;
-  var offset = 0;
-  var count = 6;
-  gl.drawArrays(primitiveType, offset, count);
+  setInterval(() => {
+    var positions = [rdn(), rdn(), rdn(), rdn(), rdn(), rdn(), rdn(), rdn(), rdn(), rdn(), rdn(), rdn()];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    // Clear the canvas
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    // draw
+    var primitiveType = gl.TRIANGLES;
+    var offset = 0;
+    var count = 6;
+    gl.drawArrays(primitiveType, offset, count);
+  }, 1000);
 }
+
+const rdn = (max = 500) => {
+  return Math.floor(Math.random() * max);
+};
 
 main();
