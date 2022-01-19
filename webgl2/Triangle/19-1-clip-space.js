@@ -64,7 +64,7 @@ function main() {
     program,
     'u_resolution'
   );
-  var colorLocation = gl.getUniformLocation(program, "u_color");
+  var colorLocation = gl.getUniformLocation(program, 'u_color');
 
   // Create a buffer and put a single pixel space rectangle in
   // it (2 triangles)
@@ -112,31 +112,34 @@ function main() {
   // Pass in the canvas resolution so we can convert from
   // pixels to clipspace in the shader
   gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
-  gl.uniform4f(colorLocation, Math.random(), Math.random(), Math.random(), 1);
-  var positions = [
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-    rdn(),
-  ];
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-  // Clear the canvas
-  gl.clearColor(0, 0, 0, 0);
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-  // draw
-  var primitiveType = gl.TRIANGLES;
-  var offset = 0;
-  var count = 6;
-  gl.drawArrays(primitiveType, offset, count);
+  setInterval(() => {
+    gl.uniform4f(colorLocation, Math.random(), Math.random(), Math.random(), 1);
+    var positions = [
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+      rdn(),
+    ];
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    // Clear the canvas
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    // draw
+    var primitiveType = gl.TRIANGLES;
+    var offset = 0;
+    var count = 6;
+    gl.drawArrays(primitiveType, offset, count);
+  }, 1000);
 }
 
 const rdn = (max = 500) => {
