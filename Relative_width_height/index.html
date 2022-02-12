@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relative width</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+      }
+
+      #parent {
+        background-image: url('./A-Class-Number-Grid-Poster-used-in-Lesson-1-2-of-EM3-The-University-of-Chicago-School.png');
+        /* Create it resizable */
+        background-color: red;
+        width: 691px;
+        height: 700px;
+      }
+      #child {
+        background-image: url('./TzpLF.png');
+        background-color: green;
+        width: 615px;
+        height: 640px;
+      }
+    </style>
+    <!-- <script src="./index.js"></script> -->
+  </head>
+  <body>
+    <div id="parent">
+      <div id="child"></div>
+    </div>
+    <canvas id="main"></canvas>
+    <script>
+      // while (childWidth <= parentWidth && childHeight <= parentHeight) {
+      //   childWidth += 0.1;
+      //   childHeight += 0.1;
+      //   child.style.width = childWidth + 'px';
+      //   child.style.height = childHeight + 'px';
+      //   console.log(childWidth, childHeight);
+      // }
+      // let interval = setInterval(() => {
+      //   childWidth += 0.1;
+      //   childHeight += 0.1;
+      //   if (childWidth >= parentWidth && childHeight >= parentHeight) {
+      //     clearInterval(interval);
+      //   }
+      //   child.style.width = childWidth + 'px';
+      //   child.style.height = childHeight + 'px';
+      //   console.log(childWidth, childHeight);
+      //   // 691.0000000000173 716.0000000000173
+      // }, 0);
+      function getCroppedImageCoor(_pwidth, _pheight, _cwidth, _cheight) {
+        let parentAspectRatio = _pwidth / _pheight;
+        let childAspectRatio = _cwidth / _cheight;
+        let childWidth = _cwidth;
+        let childHeight = _cheight;
+
+        // First case Aspect ratio same
+        if (parentAspectRatio === childAspectRatio) {
+          console.log('Aspect ratio same');
+          // Here are two situations
+          // 1. Child is smaller than parent
+          // let it be
+          // 2. Child is bigger than parent
+          if (childWidth > _pwidth && childHeight > _pheight) {
+            // let it be
+            childWidth = _pheight;
+            childHeight = _pheight;
+          }
+        }
+
+        // Second case Aspect ratio less than parent
+        if (parentAspectRatio > childAspectRatio) {
+          // Here are two situations
+          // 1. Child is smaller than parent
+          if (childWidth <= _pwidth && childHeight <= _pheight) {
+            //  Height is greater than width
+            childWidth = childWidth;
+            childHeight = childWidth / parentAspectRatio;
+          }
+          // 2. Child is bigger than parent
+          if (childWidth >= _pwidth && childHeight >= _pheight) {
+            //  Height is greater than width
+            childWidth = _pwidth;
+            childHeight = childWidth / parentAspectRatio;
+          }
+          // 3. Width is greater than parent and height is less than parent
+          if (childWidth >= _pwidth && childHeight <= _pheight) {
+            childHeight = childHeight;
+            childWidth = childHeight * parentAspectRatio;
+          }
+          // 4. Width is less than parent and height is greater than parent
+          if (childWidth <= _pwidth && childHeight >= _pheight) {
+            childWidth = childWidth;
+            childHeight = childWidth / parentAspectRatio;
+          }
+        }
+
+        // Third case Aspect ratio greater than parent
+        if (parentAspectRatio < childAspectRatio) {
+          // Here are two situations
+          // 1. Child is smaller than parent
+          if (childWidth <= _pwidth && childHeight <= _pheight) {
+            //  Height is greater than width
+            childWidth = childHeight * parentAspectRatio;
+            childHeight = childHeight;
+          }
+          // 2. Child is bigger than parent
+          if (childWidth >= _pwidth && childHeight >= _pheight) {
+            //  Height is greater than width
+            childWidth = _pwidth;
+            childHeight = childWidth / parentAspectRatio;
+          }
+          // 3. Width is greater than parent and height is less than parent
+          if (childWidth >= _pwidth && childHeight <= _pheight) {
+            childHeight = childHeight;
+            childWidth = childHeight * parentAspectRatio;
+          }
+          // 4. Width is less than parent and height is greater than parent
+          if (childWidth <= _pwidth && childHeight >= _pheight) {
+            childWidth = childWidth;
+            childHeight = childWidth / parentAspectRatio;
+          }
+        }
+
+        return {
+          cWidth: childWidth,
+          cHeight: childHeight,
+        };
+      }
+    
+      let parent = document.querySelector('#parent');
+      let child = document.querySelector('#child');
+      let parentWidth = parent.offsetWidth;
+      let parentHeight = parent.offsetHeight;
+      let childWidth = child.offsetWidth;
+      let childHeight = child.offsetHeight;
+      let croppedImageCoor = getCroppedImageCoor(parentWidth, parentHeight, childWidth, childHeight);
+
+      child.style.width = croppedImageCoor.cWidth + 'px';
+      child.style.height = croppedImageCoor.cHeight + 'px';
+    </script>
+  </body>
+</html>
