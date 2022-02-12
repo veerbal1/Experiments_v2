@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./test9.js"></script>
+    <script type="module" src="./19-1-3d.js"></script>
     <style>
       * {
         margin: 0;
@@ -16,5 +16,18 @@
   </head>
   <body>
     <canvas id="canvas" width="500" height="500"></canvas>
+    <div id="uiContainer">
+      <div id="ui">
+        <div id="x"></div>
+        <div id="y"></div>
+        <p>Scale</p>
+        <div id="scaleX"></div>
+        <div id="scaleY"></div>
+        <p>Rotate</p>
+        <div id="angle"></div>
+      </div>
+    </div>
+    <script src="https://webgl2fundamentals.org/webgl/resources/webgl-utils.js"></script>
+    <script src="https://webgl2fundamentals.org/webgl/resources/webgl-lessons-ui.js"></script>
   </body>
 </html>
