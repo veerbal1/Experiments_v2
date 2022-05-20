@@ -1,0 +1,17 @@
+{
+  "name": "3d-clock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"snowpack dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "snowpack": "3.8.8",
+    "three": "0.136.0"
+  }
+}
