@@ -1,6 +1,12 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable max-len */
+/* eslint-disable require-jsdoc */
+/* eslint-disable prefer-const */
+/* eslint-disable new-cap */
+/* eslint-disable indent */
+import './style.scss';
 import { ACESFilmicToneMapping } from 'three';
 import { Mesh } from 'three';
-import { SphereBufferGeometry } from 'three';
 import { PMREMGenerator } from 'three';
 import { MeshStandardMaterial } from 'three';
 import { sRGBEncoding } from 'three';
@@ -15,13 +21,9 @@ import { CylinderBufferGeometry } from 'three';
 import { Group } from 'three';
 import { Vector2 } from 'three';
 import { BoxBufferGeometry } from 'three';
-import { DirectionalLight } from 'three';
-import { PlaneBufferGeometry } from 'three';
-import * as dat from 'dat.gui';
 import { Clock } from 'three';
 
 window.onload = () => {
-  const datUI = new dat.GUI();
   const scene = new Scene();
   scene.background = new Color(0xffffff);
 
@@ -32,6 +34,7 @@ window.onload = () => {
     antialias: true,
   });
   renderer.toneMapping = ACESFilmicToneMapping;
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
   renderer.outputEncoding = sRGBEncoding;
   renderer.shadowMap.enabled = true;
   renderer.setSize(innerWidth, innerHeight);
@@ -41,24 +44,24 @@ window.onload = () => {
   controls.enableDamping = true;
   controls.target.set(0, 0, 0);
 
-  let pmrem = new PMREMGenerator(renderer);
+  const pmrem = new PMREMGenerator(renderer);
   pmrem.compileEquirectangularShader();
 
-  let mousePos = new Vector2(0, 0);
+  const mousePos = new Vector2(0, 0);
 
   addEventListener('mousemove', (e) => {
-    let x = e.clientX - innerWidth * 0.5;
-    let y = e.clientY - innerHeight * 0.5;
+    const x = e.clientX - innerWidth * 0.5;
+    const y = e.clientY - innerHeight * 0.5;
 
     mousePos.x = x * 0.001;
     mousePos.y = y * 0.001;
   });
 
   (async () => {
-    let envHDRTexture = await new RGBELoader().loadAsync(
-      './cannon_1k_blurred.pic'
+    const envHDRTexture = await new RGBELoader().loadAsync(
+      require('./assets/cannon_1k_blurred.pic')
     );
-    let envRT = pmrem.fromEquirectangular(envHDRTexture);
+    const envRT = pmrem.fromEquirectangular(envHDRTexture);
 
     const ring1 = CustomRing(envRT, 0.5, 0xffffff);
     ring1.scale.set(0.75, 0.75);
@@ -242,18 +245,3 @@ function CustomLine(
 
   return group;
 }
-
-const Ground = () => {
-  const ground = new Mesh(
-    new PlaneBufferGeometry(100, 100, 100, 100),
-    new MeshStandardMaterial({
-      color: 0xffffff,
-      metalness: 0.5,
-      roughness: 0.5,
-    })
-  );
-  ground.receiveShadow = true;
-  ground.rotation.x = -Math.PI / 2;
-  ground.position.y = -3;
-  return ground;
-};

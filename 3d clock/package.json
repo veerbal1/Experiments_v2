@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"snowpack dev"
+    "start": "snowpack dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dat-gui": "^0.5.0",
+    "dat.gui": "^0.7.9",
     "snowpack": "3.8.8",
-    "three": "0.136.0"
+    "three": "^0.136.0"
   }
 }
