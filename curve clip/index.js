@@ -17,7 +17,7 @@ window.onload = () => {
   const constantVal = Math.PI / x;
   while (x !== -1) {
     const radian = Number((constantVal * x).toFixed(5));
-    const y = Math.sin(radian);
+    const y = Math.sin(radian) * 0.5;
 
     console.log(x, radian, Number((100 - y * 100).toFixed(6)));
     others += `,${x}% ${Number((y * 100).toFixed(6))}% `;
@@ -25,7 +25,7 @@ window.onload = () => {
     x--;
   }
   // console.log(others);
-  element.style.clipPath = `polygon(${topLeft}, ${bottomLeft}, ${bottomRight}, ${topRight}, ${others})`;
+//   element.style.clipPath = `polygon(${topLeft}, ${bottomLeft}, ${bottomRight}, ${topRight}, ${others})`;
   console.log(
     `polygon(${topLeft}, ${bottomLeft}, ${bottomRight}, ${topRight} ${others})`
   );
