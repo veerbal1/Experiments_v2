@@ -1,0 +1,111 @@
+{
+  "placement-info": {
+    "status": "success",
+    "message": "Placement info found.",
+    "payload": {
+      "data": [
+        {
+          "id": "874",
+          "display_id": "pl220525001",
+          "name": "Display_Big Happy_Geo-Targeted 6 Key Markets_Custom Baking, Entertainment Food, Summer, Easter and Hispanic Heritage Month Focused Keyword Targeting_Animated Sunrise Unit_Rich Media5405405.4054054",
+          "client_placement_id": "",
+          "client_placement_name": "",
+          "deal_id": "",
+          "targeting_applied": "",
+          "start_date": "2022-05-30T00:00:00-0400",
+          "end_date": "2022-12-31T00:00:00-0500",
+          "creative_id": "1278",
+          "campaign_id": "217",
+          "is_MOAT_pixel_enabled": false,
+          "is_peer39_pixel_enabled": false,
+          "dsp_provider": "Xandr Invest",
+          "site_served": false,
+          "click_url": "https://ad.doubleclick.net/ddm/trackclk/N763.3928021BIGHAPPYLLC/B27362685.330189516;dc_trk_aid=529152150;dc_trk_cid=172357296;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;ltd=",
+          "third_party_pixels": [
+            {
+              "code": "<IMG SRC=\"https://ad.doubleclick.net/ddm/trackimp/N763.3928021BIGHAPPYLLC/B27362685.330189516;dc_trk_aid=529152150;dc_trk_cid=172357296;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=?\" BORDER=\"0\" HEIGHT=\"1\" WIDTH=\"1\" ALT=\"Advertisement\">",
+              "tagProvider": "DCM"
+            }
+          ],
+          "is_deleted": false,
+          "created_on": "2022-05-25T14:36:00.885655-0400",
+          "updated_on": "2022-05-25T14:36:00.885655-0400",
+          "updated_on_al": "2022-05-25T14:36:00.885655-0400",
+          "updated_by": "ines@bighappy.co"
+        },
+        {
+          "id": "875",
+          "display_id": "pl220525002",
+          "name": "Display_Big Happy_Geo-Targeted 6 Key Markets_US Hispanic Parents A25-55 with Kids A5-15_Animated Sunrise Unit_Rich Media3783783.78378378",
+          "client_placement_id": "",
+          "client_placement_name": "",
+          "deal_id": "",
+          "targeting_applied": "",
+          "start_date": "2022-05-30T00:00:00-0400",
+          "end_date": "2022-12-31T00:00:00-0500",
+          "creative_id": "1278",
+          "campaign_id": "217",
+          "is_MOAT_pixel_enabled": false,
+          "is_peer39_pixel_enabled": false,
+          "dsp_provider": "Xandr Invest",
+          "site_served": false,
+          "click_url": "https://ad.doubleclick.net/ddm/trackclk/N763.3928021BIGHAPPYLLC/B27362685.330190080;dc_trk_aid=529152153;dc_trk_cid=172357296;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;ltd=",
+          "third_party_pixels": [
+            {
+              "code": "<IMG SRC=\"https://ad.doubleclick.net/ddm/trackimp/N763.3928021BIGHAPPYLLC/B27362685.330190080;dc_trk_aid=529152153;dc_trk_cid=172357296;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=?\" BORDER=\"0\" HEIGHT=\"1\" WIDTH=\"1\" ALT=\"Advertisement\">",
+              "tagProvider": "DCM"
+            }
+          ],
+          "is_deleted": false,
+          "created_on": "2022-05-25T14:36:37.169001-0400",
+          "updated_on": "2022-05-25T14:36:37.169001-0400",
+          "updated_on_al": "2022-05-25T14:36:37.169001-0400",
+          "updated_by": "ines@bighappy.co"
+        },
+        {
+          "id": "876",
+          "display_id": "pl220525003",
+          "name": "Display_Big Happy_Geo-Targeted 6 Key Markets_NCS Purchase Based Targeting Competitor Dessert Topping Products_Animated Sunrise Unit_Rich Media3414634.14634146",
+          "client_placement_id": "",
+          "client_placement_name": "",
+          "deal_id": "",
+          "targeting_applied": "",
+          "start_date": "2022-05-30T00:00:00-0400",
+          "end_date": "2022-12-31T00:00:00-0500",
+          "creative_id": "1278",
+          "campaign_id": "217",
+          "is_MOAT_pixel_enabled": false,
+          "is_peer39_pixel_enabled": false,
+          "dsp_provider": "Xandr Invest",
+          "site_served": false,
+          "click_url": "https://ad.doubleclick.net/ddm/trackclk/N763.3928021BIGHAPPYLLC/B27362685.330331006;dc_trk_aid=528982940;dc_trk_cid=172357296;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;ltd=",
+          "third_party_pixels": [
+            {
+              "code": "<IMG SRC=\"https://ad.doubleclick.net/ddm/trackimp/N763.3928021BIGHAPPYLLC/B27362685.330331006;dc_trk_aid=528982940;dc_trk_cid=172357296;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=?\" BORDER=\"0\" HEIGHT=\"1\" WIDTH=\"1\" ALT=\"Advertisement\">",
+              "tagProvider": "DCM"
+            }
+          ],
+          "is_deleted": false,
+          "created_on": "2022-05-25T14:38:21.654571-0400",
+          "updated_on": "2022-05-25T14:38:21.654571-0400",
+          "updated_on_al": "2022-05-25T14:38:21.654571-0400",
+          "updated_by": "ines@bighappy.co"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "status": "success",
+    "message": "Placement Metrics Info",
+    "payload": {
+      "data": {
+        "impressions_total": 10,
+        "clicks_total": 2,
+        "impressions_today": 241,
+        "clicks_today": 0,
+        "impressions_yesterday": 16599,
+        "clicks_yesterday": 215
+      }
+    }
+  }
+}
